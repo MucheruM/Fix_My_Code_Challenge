@@ -1,4 +1,3 @@
-#!/usr/bin/ruby
 ###
 #
 #  Sort integer arguments (ascending) 
@@ -7,12 +6,12 @@
 
 result = []
 ARGV.each do |arg|
-    # skip if not integer
-    next if arg !~ /^-?[0-9]+$/
+    # skips if not integer
+    next if arg !~ /^-?[0-9]+$/ or /^[a-z]$/
 
-    # convert to integer
+    # convert to integer if possible
     i_arg = arg.to_i
-    
+
     # insert result at the right position
     is_inserted = false
     i = 0
@@ -21,7 +20,7 @@ ARGV.each do |arg|
         if result[i] < i_arg
             i += 1
         else
-            result.insert(i - 1, i_arg)
+            result.insert(i, i_arg)
             is_inserted = true
             break
         end
